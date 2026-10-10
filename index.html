@@ -1,0 +1,1893 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Mis Deseados</title>
+    <meta name="description" content="Wishlist personal y minimalista de ropa y cosas deseadas a partir del enlace de compra." />
+    <meta property="og:title" content="Mis Deseados" />
+    <meta property="og:description" content="Wishlist personal y minimalista de ropa y cosas deseadas a partir del enlace de compra." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Google Fonts: Plus Jakarta Sans & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-main: #0e0f12;
+        --bg-surface: #16171c;
+        --bg-surface-elevated: #1e1f26;
+        --bg-surface-subtle: #131418;
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --border-focus: rgba(199, 169, 130, 0.45);
+        --text-primary: #f5f5f7;
+        --text-secondary: #9aa0af;
+        --text-muted: #5e6473;
+        --accent-taupe: #c7a982;
+        --accent-taupe-hover: #d8bc98;
+        --accent-taupe-subtle: rgba(199, 169, 130, 0.12);
+        --titanium: #2b2e38;
+        --danger: #e25c5c;
+        --danger-subtle: rgba(226, 92, 92, 0.12);
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+        --radius-xl: 26px;
+        --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.35);
+        --shadow-float: 0 12px 36px rgba(0, 0, 0, 0.55);
+        --safe-bottom: env(safe-area-inset-bottom, 16px);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      body {
+        background-color: #08090b;
+        color: var(--text-primary);
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.45;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Mobile Frame Container */
+      .app-viewport {
+        max-width: 440px;
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin: 0 auto;
+        background-color: var(--bg-main);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 0 70px rgba(0, 0, 0, 0.85);
+        border-left: 1px solid rgba(255, 255, 255, 0.04);
+        border-right: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      /* Sticky Top Navigation Bar */
+      .app-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: rgba(14, 15, 18, 0.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand-lockup {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-monogram {
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(135deg, #2b2e38 0%, #17181c 100%);
+        border: 1px solid rgba(199, 169, 130, 0.35);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-taupe);
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: -0.5px;
+      }
+
+      .brand-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .brand-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-primary);
+        line-height: 1.1;
+      }
+
+      .brand-subtitle {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--accent-taupe);
+        text-transform: uppercase;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-icon-action {
+        width: 38px;
+        height: 38px;
+        border-radius: var(--radius-sm);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .btn-icon-action:hover {
+        color: var(--text-primary);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: var(--bg-surface-elevated);
+      }
+
+      .btn-icon-action:active {
+        transform: scale(0.95);
+      }
+
+      .btn-primary-add {
+        background: var(--accent-taupe);
+        color: #121212;
+        border: none;
+        font-weight: 700;
+      }
+
+      .btn-primary-add:hover {
+        background: var(--accent-taupe-hover);
+        color: #000;
+      }
+
+      /* Main Content Area */
+      .app-content {
+        flex: 1;
+        padding: 16px 18px 160px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      /* View Header */
+      .view-header {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .view-title-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+
+      .view-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+      }
+
+      .view-count {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--accent-taupe);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .view-desc {
+        font-size: 12px;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      /* Search & Filter Bar */
+      .filter-toolbar {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .search-input-wrap {
+        position: relative;
+        width: 100%;
+      }
+
+      .search-icon-svg {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        pointer-events: none;
+      }
+
+      .search-input {
+        width: 100%;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 10px 14px 10px 36px;
+        font-size: 13px;
+        color: var(--text-primary);
+        outline: none;
+        transition: all 0.2s ease;
+        font-family: inherit;
+      }
+
+      .search-input:focus {
+        border-color: var(--border-focus);
+        background: var(--bg-surface-elevated);
+      }
+
+      .search-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      /* Category Filter Chips */
+      .filter-scroll {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        overflow-x: auto;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+      .filter-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-chip {
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-secondary);
+        font-size: 11px;
+        font-weight: 500;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .filter-chip.active {
+        background: var(--bg-surface-elevated);
+        border-color: rgba(199, 169, 130, 0.45);
+        color: var(--accent-taupe);
+        font-weight: 600;
+      }
+
+      .filter-chip:hover:not(.active) {
+        color: var(--text-primary);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Card List */
+      .card-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .item-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .item-card:hover {
+        background: var(--bg-surface-elevated);
+        border-color: rgba(255, 255, 255, 0.12);
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-card);
+      }
+
+      /* Thumbnail Box - Clickeable para ampliar imagen */
+      .item-thumb-box {
+        width: 68px;
+        height: 68px;
+        min-width: 68px;
+        border-radius: 10px;
+        background: #111215;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      .item-thumb-box:hover {
+        transform: scale(1.04);
+        border-color: var(--accent-taupe);
+      }
+
+      .item-thumb-box:active {
+        transform: scale(0.96);
+      }
+
+      .item-thumb-zoom-hint {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 4px;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-taupe);
+        opacity: 0.85;
+      }
+
+      .item-thumb-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .item-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .item-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .item-category-tag {
+        font-size: 10.5px;
+        color: var(--accent-taupe);
+        font-weight: 500;
+      }
+
+      .item-actions-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 4px;
+      }
+
+      .link-store {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-primary);
+        text-decoration: none;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: rgba(199, 169, 130, 0.12);
+        border: 1px solid rgba(199, 169, 130, 0.3);
+        transition: all 0.2s ease;
+      }
+
+      .link-store:hover {
+        background: var(--accent-taupe);
+        color: #121212;
+        border-color: var(--accent-taupe);
+      }
+
+      .btn-delete-item {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-delete-item:hover {
+        color: var(--danger);
+        background: var(--danger-subtle);
+      }
+
+      .btn-delete-item:active {
+        transform: scale(0.9);
+      }
+
+      /* Spacer to prevent any bottom button from covering the last item */
+      .list-bottom-spacer {
+        height: 30px;
+        width: 100%;
+      }
+
+      /* Empty State */
+      .empty-state {
+        padding: 50px 20px;
+        text-align: center;
+        background: var(--bg-surface-subtle);
+        border: 1px dashed var(--border-subtle);
+        border-radius: var(--radius-lg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 6px;
+      }
+
+      .empty-state-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: var(--bg-surface);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        border: 1px solid var(--border-subtle);
+      }
+
+      .empty-state-title {
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .empty-state-sub {
+        font-size: 12px;
+        color: var(--text-secondary);
+        max-width: 260px;
+        line-height: 1.4;
+      }
+
+      /* Fixed Mobile Bottom Navigation (2 Secciones: Ropa vs Cosas) */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 440px;
+        z-index: 50;
+        background: rgba(16, 17, 21, 0.94);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border-subtle);
+        padding: 8px 16px calc(8px + var(--safe-bottom)) 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .nav-tab-btn {
+        background: transparent;
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 8px 6px;
+        border-radius: var(--radius-md);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        min-height: 48px;
+      }
+
+      .nav-tab-btn:hover {
+        color: var(--text-secondary);
+      }
+
+      .nav-tab-btn.active {
+        color: var(--accent-taupe);
+        background: rgba(199, 169, 130, 0.08);
+      }
+
+      .nav-tab-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      /* Floating Add Action Button */
+      .fab-add-button {
+        position: fixed;
+        bottom: calc(76px + var(--safe-bottom));
+        right: calc(50% - 200px);
+        z-index: 45;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--accent-taupe);
+        color: #121212;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(199, 169, 130, 0.35);
+        cursor: pointer;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      @media (max-width: 440px) {
+        .fab-add-button {
+          right: 20px;
+        }
+      }
+
+      .fab-add-button:hover {
+        transform: scale(1.06);
+        background: var(--accent-taupe-hover);
+        box-shadow: 0 10px 30px rgba(199, 169, 130, 0.45);
+      }
+
+      .fab-add-button:active {
+        transform: scale(0.94);
+      }
+
+      /* Modal de Añadir */
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(4, 5, 7, 0.82);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        z-index: 100;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+      }
+
+      .modal-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-sheet {
+        width: 100%;
+        max-width: 440px;
+        background: var(--bg-surface-elevated);
+        border-top-left-radius: var(--radius-xl);
+        border-top-right-radius: var(--radius-xl);
+        border: 1px solid var(--border-subtle);
+        border-bottom: none;
+        box-shadow: var(--shadow-float);
+        max-height: 90vh;
+        max-height: 90dvh;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden;
+      }
+
+      .modal-backdrop.open .modal-sheet {
+        transform: translateY(0);
+      }
+
+      .sheet-handle-bar {
+        width: 40px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 12px auto 6px auto;
+      }
+
+      .sheet-header {
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .sheet-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16.5px;
+        font-weight: 700;
+        color: var(--text-primary);
+      }
+
+      .sheet-close-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        cursor: pointer;
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: color 0.2s;
+      }
+
+      .sheet-close-btn:hover {
+        color: var(--text-primary);
+      }
+
+      .sheet-body {
+        padding: 16px 20px calc(24px + var(--safe-bottom)) 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      /* Form elements */
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+      }
+
+      .form-input, .form-select {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-sm);
+        padding: 12px 14px;
+        font-size: 13.5px;
+        color: var(--text-primary);
+        font-family: inherit;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .form-input:focus, .form-select:focus {
+        border-color: var(--border-focus);
+      }
+
+      .form-select option {
+        background: var(--bg-surface-elevated);
+        color: var(--text-primary);
+      }
+
+      /* Custom Photo Upload Section */
+      .custom-photo-section {
+        background: var(--bg-surface-subtle);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .photo-actions-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .btn-upload-file {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px dashed rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius-sm);
+        padding: 10px 12px;
+        color: var(--text-primary);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .btn-upload-file:hover {
+        background: rgba(199, 169, 130, 0.1);
+        border-color: var(--accent-taupe);
+        color: var(--accent-taupe);
+      }
+
+      .btn-clear-photo {
+        background: transparent;
+        border: none;
+        color: var(--danger);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 6px 8px;
+      }
+
+      /* Live Preview Card */
+      .auto-detected-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: all 0.2s ease;
+      }
+
+      .auto-detected-thumb {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        border-radius: 8px;
+        object-fit: cover;
+        background: #111;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .auto-detected-info {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .auto-detected-badge {
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--accent-taupe);
+        letter-spacing: 0.06em;
+      }
+
+      .auto-detected-name {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--text-primary);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .auto-detected-meta {
+        font-size: 11px;
+        color: var(--text-muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .btn-submit-action {
+        background: var(--accent-taupe);
+        color: #121212;
+        border: none;
+        padding: 13px 20px;
+        border-radius: var(--radius-md);
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 6px;
+      }
+
+      .btn-submit-action:hover {
+        background: var(--accent-taupe-hover);
+      }
+
+      .btn-submit-action:active {
+        transform: scale(0.98);
+      }
+
+      /* Modal Lightbox para Ampliar Imagen al pulsar */
+      .zoom-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        z-index: 150;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+        padding: 20px;
+      }
+
+      .zoom-modal-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .zoom-card {
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        max-width: 380px;
+        width: 100%;
+        overflow: hidden;
+        box-shadow: var(--shadow-float);
+        transform: scale(0.92);
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .zoom-modal-backdrop.open .zoom-card {
+        transform: scale(1);
+      }
+
+      .zoom-img-container {
+        width: 100%;
+        height: 320px;
+        background: #090a0d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .zoom-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .zoom-card-footer {
+        padding: 14px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: var(--bg-surface);
+      }
+
+      .zoom-card-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.3;
+      }
+
+      .zoom-card-meta {
+        font-size: 11px;
+        color: var(--accent-taupe);
+        font-weight: 600;
+      }
+
+      .zoom-close-btn-float {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: background 0.2s;
+      }
+
+      .zoom-close-btn-float:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+
+      /* Toast Notification */
+      .toast-container {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 200;
+        width: 90%;
+        max-width: 400px;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .toast {
+        background: var(--bg-surface-elevated);
+        border: 1px solid rgba(199, 169, 130, 0.4);
+        border-radius: var(--radius-md);
+        padding: 12px 16px;
+        color: var(--text-primary);
+        font-size: 12.5px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes toastIn {
+        from { opacity: 0; transform: translateY(-16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .toast-undo-btn {
+        background: transparent;
+        border: none;
+        color: var(--accent-taupe);
+        font-weight: 700;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 2px 6px;
+        pointer-events: auto;
+      }
+
+      @media (min-width: 768px) {
+        body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          padding: 24px 0;
+          background: radial-gradient(circle at 50% 20%, #15171e 0%, #07080a 100%);
+        }
+
+        .app-viewport {
+          border-radius: 36px;
+          min-height: 850px;
+          height: 90vh;
+          max-height: 920px;
+          overflow: hidden;
+          box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .app-content {
+          overflow-y: auto;
+          padding-bottom: 160px;
+        }
+
+        .bottom-nav {
+          position: absolute;
+          border-bottom-left-radius: 36px;
+          border-bottom-right-radius: 36px;
+        }
+
+        .fab-add-button {
+          position: absolute;
+          bottom: calc(84px + var(--safe-bottom));
+          right: 24px;
+        }
+
+        .modal-sheet {
+          border-bottom-left-radius: 36px;
+          border-bottom-right-radius: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-viewport">
+      <!-- Top Application Bar -->
+      <header class="app-header">
+        <div class="brand-lockup">
+          <div class="brand-monogram">MD</div>
+          <div class="brand-text">
+            <span class="brand-title">Mis Deseados</span>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn-icon-action" id="btn-open-search" title="Buscar en deseados">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <button class="btn-icon-action btn-primary-add" id="btn-header-add" title="Añadir a deseados">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Dynamic Content Container -->
+      <main class="app-content" id="app-content">
+        <!-- Rendered dynamically -->
+      </main>
+
+      <!-- Floating Add Button -->
+      <button class="fab-add-button" id="fab-add-btn" title="Añadir a deseados">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+
+      <!-- Fixed Mobile Bottom Navigation (2 Secciones: Ropa vs Cosas) -->
+      <nav class="bottom-nav">
+        <button class="nav-tab-btn active" data-tab="clothing" id="tab-btn-clothing">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+          </svg>
+          <span class="nav-tab-label">Ropa</span>
+        </button>
+
+        <button class="nav-tab-btn" data-tab="lifestyle" id="tab-btn-lifestyle">
+          <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="7"></circle>
+            <polyline points="12 9 12 12 13.5 13.5"></polyline>
+            <path d="M16.51 17.35l-.85 3.22a2 2 0 0 1-1.95 1.43H10.3a2 2 0 0 1-1.95-1.43l-.85-3.22"></path>
+            <path d="M7.49 6.65l.85-3.22A2 2 0 0 1 10.3 2h3.4a2 2 0 0 1 1.95 1.43l.85 3.22"></path>
+          </svg>
+          <span class="nav-tab-label">Cosas</span>
+        </button>
+      </nav>
+
+      <!-- Modal de Añadir Deseado (Nombre Visible y Editable + Enlace + Foto) -->
+      <div class="modal-backdrop" id="modal-add-item">
+        <div class="modal-sheet">
+          <div class="sheet-handle-bar"></div>
+          <div class="sheet-header">
+            <h2 class="sheet-title">Añadir a Deseados</h2>
+            <button class="sheet-close-btn" id="modal-close-add">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="sheet-body">
+            <form id="form-add-wish" onsubmit="event.preventDefault(); handleAddWishSubmit();">
+              <!-- 1. Enlace de Compra -->
+              <div class="form-group">
+                <label class="form-label">1. Enlace de Compra (Tienda o Producto)</label>
+                <input type="url" class="form-input" id="wish-url" required placeholder="Pega aquí el enlace de la tienda..." autocomplete="off">
+              </div>
+
+              <!-- 2. Nombre del Producto (Visible, Editable, con auto-completado al pegar enlace) -->
+              <div class="form-group">
+                <label class="form-label">2. Nombre de la Prenda o Artículo</label>
+                <input type="text" class="form-input" id="wish-name" required placeholder="Escribe el nombre o se auto-completará del enlace...">
+              </div>
+
+              <!-- 3. Categoría -->
+              <div class="form-group">
+                <label class="form-label">3. Categoría</label>
+                <select class="form-select" id="wish-category">
+                  <optgroup label="Ropa">
+                    <option value="camisetas">Camisetas</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="zapatillas">Zapatillas</option>
+                    <option value="sudaderas-chaquetas">Sudaderas y Chaquetas</option>
+                    <option value="abrigos">Abrigos</option>
+                  </optgroup>
+                  <optgroup label="Cosas">
+                    <option value="accesorios">Accesorios</option>
+                    <option value="cosas-que-me-gustan">Cosas que me gustan</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <!-- 4. Foto Personalizada -->
+              <div class="form-group">
+                <label class="form-label">4. Tu Foto (Sube desde el móvil o pega URL)</label>
+                <div class="custom-photo-section">
+                  <input type="file" id="wish-file-input" accept="image/*" style="display: none;">
+                  
+                  <div class="photo-actions-row">
+                    <button type="button" class="btn-upload-file" id="btn-trigger-file-upload">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                        <circle cx="9" cy="9" r="2"></circle>
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path>
+                      </svg>
+                      <span id="label-upload-text">Subir foto desde galería / cámara</span>
+                    </button>
+                    <button type="button" class="btn-clear-photo" id="btn-clear-custom-photo" style="display: none;">Quitar</button>
+                  </div>
+
+                  <input type="url" class="form-input" id="wish-custom-url" placeholder="O pega aquí la URL de la foto..." style="font-size: 12px; padding: 9px 12px;">
+                </div>
+              </div>
+
+              <!-- Vista Previa en Vivo -->
+              <div class="auto-detected-card" id="auto-detected-card" style="display: none;">
+                <img id="auto-detected-thumb" src="" alt="Producto" class="auto-detected-thumb" onerror="handleImageError(this)">
+                <div class="auto-detected-info">
+                  <span class="auto-detected-badge" id="auto-detected-badge">Vista previa</span>
+                  <span class="auto-detected-name" id="auto-detected-name">Nombre</span>
+                  <span class="auto-detected-meta" id="auto-detected-meta">Categoría</span>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit-action" style="width: 100%;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                <span>Guardar en Deseados</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Lightbox para Ampliar Imagen -->
+      <div class="zoom-modal-backdrop" id="modal-zoom-image">
+        <div class="zoom-card" id="zoom-card">
+          <div class="zoom-img-container">
+            <button class="zoom-close-btn-float" id="btn-close-zoom" title="Cerrar">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <img id="zoom-image-el" src="" alt="Ampliada" class="zoom-img" onerror="handleImageError(this)">
+          </div>
+          <div class="zoom-card-footer">
+            <h3 class="zoom-card-title" id="zoom-card-title">Nombre del Artículo</h3>
+            <span class="zoom-card-meta" id="zoom-card-meta">Categoría</span>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="link-store" id="zoom-card-store-link" style="align-self: flex-start; margin-top: 4px;">
+              <span>Ir a la tienda</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Feedback Area -->
+      <div class="toast-container" id="toast-container"></div>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+      /**
+       * ATELIER NOIR - Mis Deseados
+       * Wishlist con ampliación de imágenes al pulsar y asignación clara y editable del nombre del producto.
+       */
+
+      // Fallback SVG generator
+      function getFallbackSvg(name, cat) {
+        const initials = (name || "Item").split(" ").map(w => w[0]).slice(0, 2).join("").toUpperCase();
+        return `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100%" height="100%" fill="%231a1b22"/><circle cx="50" cy="50" r="34" fill="%23252733"/><text x="50" y="56" fill="%23c7a982" font-family="sans-serif" font-size="20" font-weight="700" text-anchor="middle">${initials}</text></svg>`;
+      }
+
+      function handleImageError(imgEl) {
+        imgEl.onerror = null;
+        imgEl.src = getFallbackSvg(imgEl.alt || "Item", "Deseado");
+      }
+
+      // Application State
+      const State = {
+        currentTab: 'clothing', // 'clothing' | 'lifestyle'
+        clothingFilter: 'all',  // 'all' | 'camisetas' | 'pantalones' | 'zapatillas' | 'sudaderas-chaquetas' | 'abrigos'
+        lifestyleFilter: 'all', // 'all' | 'accesorios' | 'cosas-que-me-gustan'
+        searchQuery: '',
+        lastDeletedItem: null,
+        userCustomPhoto: null,
+        items: []
+      };
+
+      // Persistent Storage
+      function loadPersistedState() {
+        try {
+          const saved = localStorage.getItem('atelier_noir_wishes_clean');
+          State.items = saved ? JSON.parse(saved) : [];
+        } catch (e) {
+          console.error("Error reading storage", e);
+          State.items = [];
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem('atelier_noir_wishes_clean', JSON.stringify(State.items));
+        } catch (e) {
+          console.error("Error saving storage", e);
+        }
+      }
+
+      // Limpia y extrae el nombre y categoría a partir de la URL de compra
+      function extractFromUrl(rawUrl) {
+        if (!rawUrl || !rawUrl.trim()) return null;
+
+        let urlObj;
+        try {
+          urlObj = new URL(rawUrl.trim().startsWith('http') ? rawUrl.trim() : 'https://' + rawUrl.trim());
+        } catch (e) {
+          return null;
+        }
+
+        const path = decodeURIComponent(urlObj.pathname).toLowerCase();
+        const hostname = urlObj.hostname.toLowerCase().replace('www.', '');
+        const fullString = (path + ' ' + decodeURIComponent(urlObj.search)).replace(/[-_/+]/g, ' ');
+
+        let category = "camisetas";
+        let section = "clothing";
+
+        if (fullString.includes('zapatilla') || fullString.includes('sneaker') || fullString.includes('air force') || fullString.includes('dunk') || fullString.includes('jordan') || fullString.includes('shoes')) {
+          category = "zapatillas";
+          section = "clothing";
+        } else if (fullString.includes('pantalon') || fullString.includes('trouser') || fullString.includes('pants') || fullString.includes('jeans') || fullString.includes('cargo')) {
+          category = "pantalones";
+          section = "clothing";
+        } else if (fullString.includes('sudadera') || fullString.includes('hoodie') || fullString.includes('sobrecamisa') || fullString.includes('overshirt') || fullString.includes('chaqueta')) {
+          category = "sudaderas-chaquetas";
+          section = "clothing";
+        } else if (fullString.includes('abrigo') || fullString.includes('coat') || fullString.includes('bomber') || fullString.includes('parka')) {
+          category = "abrigos";
+          section = "clothing";
+        } else if (fullString.includes('reloj') || fullString.includes('watch') || fullString.includes('cartera') || fullString.includes('wallet') || fullString.includes('gafas') || fullString.includes('cinturon')) {
+          category = "accesorios";
+          section = "lifestyle";
+        } else if (fullString.includes('auricular') || fullString.includes('headphone') || fullString.includes('sony') || fullString.includes('perfume') || fullString.includes('tech') || fullString.includes('gadget')) {
+          category = "cosas-que-me-gustan";
+          section = "lifestyle";
+        }
+
+        const rawSlug = extractMeaningfulSlug(urlObj.pathname);
+        const name = rawSlug ? formatTitle(rawSlug) : ("Artículo de " + hostname.split('.')[0].toUpperCase());
+
+        return {
+          name: name,
+          category: category,
+          section: section,
+          domain: hostname
+        };
+      }
+
+      function extractMeaningfulSlug(pathname) {
+        if (!pathname || pathname === '/') return '';
+        const segments = pathname.split('/').filter(s => s && s.length > 2);
+        if (segments.length === 0) return '';
+        let candidate = segments[segments.length - 1];
+        if (candidate.endsWith('.html') || candidate.endsWith('.htm')) {
+          candidate = candidate.replace(/\.html?$/i, '');
+        }
+        candidate = candidate.replace(/-p\d+.*$/i, '').replace(/\b[A-Z0-9]{6,}\b/gi, '').trim();
+        return candidate.replace(/[-_+]/g, ' ').trim();
+      }
+
+      function formatTitle(str) {
+        return str
+          .split(' ')
+          .filter(w => w.length > 0 && !['es', 'en', 'product', 'detail', 'tienda', 'comprar', 'item'].includes(w.toLowerCase()))
+          .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+          .slice(0, 7)
+          .join(' ');
+      }
+
+      // Toast Notifications
+      function showToast(message, allowUndo = false) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+          <span>${message}</span>
+          ${allowUndo ? `<button class="toast-undo-btn" onclick="handleUndoDelete()">Deshacer</button>` : ''}
+        `;
+
+        container.appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.transition = 'all 0.25s ease';
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(-10px)';
+          setTimeout(() => toast.remove(), 250);
+        }, allowUndo ? 4500 : 2500);
+      }
+
+      function handleUndoDelete() {
+        if (!State.lastDeletedItem) return;
+        State.items.unshift(State.lastDeletedItem);
+        saveState();
+        renderActiveView();
+        showToast("Elemento restaurado");
+        State.lastDeletedItem = null;
+      }
+
+      const CATEGORY_NAMES = {
+        'camisetas': 'Camisetas',
+        'pantalones': 'Pantalones',
+        'zapatillas': 'Zapatillas',
+        'sudaderas-chaquetas': 'Sudaderas y Chaquetas',
+        'abrigos': 'Abrigos',
+        'accesorios': 'Accesorios',
+        'cosas-que-me-gustan': 'Cosas que me gustan'
+      };
+
+      // Zoom Modal / Lightbox al pulsar la imagen
+      window.openImageZoom = function(id) {
+        const item = State.items.find(it => it.id === id);
+        if (!item) return;
+
+        const zoomModal = document.getElementById('modal-zoom-image');
+        const zoomImg = document.getElementById('zoom-image-el');
+        const zoomTitle = document.getElementById('zoom-card-title');
+        const zoomMeta = document.getElementById('zoom-card-meta');
+        const zoomLink = document.getElementById('zoom-card-store-link');
+
+        if (zoomModal && zoomImg) {
+          zoomImg.src = item.image || getFallbackSvg(item.name, item.category);
+          zoomImg.alt = item.name;
+          zoomTitle.textContent = item.name;
+          zoomMeta.textContent = CATEGORY_NAMES[item.category] || item.category;
+          zoomLink.href = item.storeUrl || '#';
+          zoomModal.classList.add('open');
+        }
+      };
+
+      function closeImageZoom() {
+        const zoomModal = document.getElementById('modal-zoom-image');
+        if (zoomModal) zoomModal.classList.remove('open');
+      }
+
+      // Render Active View
+      function renderActiveView() {
+        const container = document.getElementById('app-content');
+        if (!container) return;
+
+        document.getElementById('tab-btn-clothing')?.classList.toggle('active', State.currentTab === 'clothing');
+        document.getElementById('tab-btn-lifestyle')?.classList.toggle('active', State.currentTab === 'lifestyle');
+
+        if (State.currentTab === 'clothing') {
+          renderClothingView(container);
+        } else {
+          renderLifestyleView(container);
+        }
+      }
+
+      // 1. Vista "Ropa"
+      function renderClothingView(container) {
+        let items = State.items.filter(it => it.section === 'clothing');
+
+        if (State.clothingFilter !== 'all') {
+          items = items.filter(it => it.category === State.clothingFilter);
+        }
+
+        if (State.searchQuery.trim()) {
+          const q = State.searchQuery.toLowerCase();
+          items = items.filter(it => it.name.toLowerCase().includes(q) || (CATEGORY_NAMES[it.category] || '').toLowerCase().includes(q));
+        }
+
+        const filterOptions = [
+          { id: 'all', label: 'Todas las prendas' },
+          { id: 'camisetas', label: 'Camisetas' },
+          { id: 'pantalones', label: 'Pantalones' },
+          { id: 'zapatillas', label: 'Zapatillas' },
+          { id: 'sudaderas-chaquetas', label: 'Sudaderas y Chaquetas' },
+          { id: 'abrigos', label: 'Abrigos' }
+        ];
+
+        const totalCount = State.items.filter(it => it.section === 'clothing').length;
+
+        container.innerHTML = `
+          <div class="view-header">
+            <div class="view-title-row">
+              <h1 class="view-title">Ropa</h1>
+              <span class="view-count">${totalCount} Deseados</span>
+            </div>
+            <p class="view-desc">Camisetas, pantalones, zapatillas, sudaderas, chaquetas y abrigos.</p>
+          </div>
+
+          <div class="filter-toolbar">
+            <div class="search-input-wrap">
+              <svg class="search-icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" class="search-input" id="clothing-search" placeholder="Buscar en ropa..." value="${State.searchQuery}">
+            </div>
+
+            <div class="filter-scroll">
+              ${filterOptions.map(opt => `
+                <button class="filter-chip ${State.clothingFilter === opt.id ? 'active' : ''}" onclick="setClothingFilter('${opt.id}')">
+                  ${opt.label}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          ${items.length === 0 ? `
+            <div class="empty-state">
+              <div class="empty-state-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path>
+                </svg>
+              </div>
+              <h3 class="empty-state-title">No hay prendas añadidas</h3>
+              <p class="empty-state-sub">Pulsa en (+) para pegar un enlace de compra, asignar el nombre y subir tu foto.</p>
+            </div>
+          ` : `
+            <div class="card-list">
+              ${items.map(item => `
+                <div class="item-card" id="card-${item.id}">
+                  <div class="item-thumb-box" onclick="openImageZoom('${item.id}')" title="Pulsa para ampliar la foto">
+                    <img src="${item.image || getFallbackSvg(item.name)}" alt="${item.name}" class="item-thumb-img" onerror="handleImageError(this)" loading="lazy">
+                    <div class="item-thumb-zoom-hint">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <h3 class="item-title" title="${item.name}">${item.name}</h3>
+                    <span class="item-category-tag">${CATEGORY_NAMES[item.category] || item.category}</span>
+                    <div class="item-actions-row">
+                      <a href="${item.storeUrl}" target="_blank" rel="noopener noreferrer" class="link-store">
+                        <span>Comprar</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </a>
+                      <button class="btn-delete-item" onclick="deleteWishItem('${item.id}')" title="Eliminar de deseados">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+              <div class="list-bottom-spacer"></div>
+            </div>
+          `}
+        `;
+
+        const searchInput = document.getElementById('clothing-search');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            State.searchQuery = e.target.value;
+            renderClothingView(container);
+            const refocused = document.getElementById('clothing-search');
+            if (refocused) {
+              refocused.focus();
+              refocused.setSelectionRange(refocused.value.length, refocused.value.length);
+            }
+          });
+        }
+      }
+
+      // 2. Vista "Cosas"
+      function renderLifestyleView(container) {
+        let items = State.items.filter(it => it.section === 'lifestyle');
+
+        if (State.lifestyleFilter !== 'all') {
+          items = items.filter(it => it.category === State.lifestyleFilter);
+        }
+
+        if (State.searchQuery.trim()) {
+          const q = State.searchQuery.toLowerCase();
+          items = items.filter(it => it.name.toLowerCase().includes(q) || (CATEGORY_NAMES[it.category] || '').toLowerCase().includes(q));
+        }
+
+        const filterOptions = [
+          { id: 'all', label: 'Todas las cosas' },
+          { id: 'accesorios', label: 'Accesorios' },
+          { id: 'cosas-que-me-gustan', label: 'Cosas que me gustan' }
+        ];
+
+        const totalCount = State.items.filter(it => it.section === 'lifestyle').length;
+
+        container.innerHTML = `
+          <div class="view-header">
+            <div class="view-title-row">
+              <h1 class="view-title">Cosas</h1>
+              <span class="view-count">${totalCount} Deseados</span>
+            </div>
+            <p class="view-desc">Accesorios, tecnología, relojes y cosas que me gustan.</p>
+          </div>
+
+          <div class="filter-toolbar">
+            <div class="search-input-wrap">
+              <svg class="search-icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" class="search-input" id="lifestyle-search" placeholder="Buscar en cosas..." value="${State.searchQuery}">
+            </div>
+
+            <div class="filter-scroll">
+              ${filterOptions.map(opt => `
+                <button class="filter-chip ${State.lifestyleFilter === opt.id ? 'active' : ''}" onclick="setLifestyleFilter('${opt.id}')">
+                  ${opt.label}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          ${items.length === 0 ? `
+            <div class="empty-state">
+              <div class="empty-state-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="7"></circle>
+                  <polyline points="12 9 12 12 13.5 13.5"></polyline>
+                </svg>
+              </div>
+              <h3 class="empty-state-title">No hay cosas añadidas</h3>
+              <p class="empty-state-sub">Añade accesorios o gadgets pulsando (+) para guardar el enlace con tu foto.</p>
+            </div>
+          ` : `
+            <div class="card-list">
+              ${items.map(item => `
+                <div class="item-card" id="card-${item.id}">
+                  <div class="item-thumb-box" onclick="openImageZoom('${item.id}')" title="Pulsa para ampliar la foto">
+                    <img src="${item.image || getFallbackSvg(item.name)}" alt="${item.name}" class="item-thumb-img" onerror="handleImageError(this)" loading="lazy">
+                    <div class="item-thumb-zoom-hint">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="item-info">
+                    <h3 class="item-title" title="${item.name}">${item.name}</h3>
+                    <span class="item-category-tag">${CATEGORY_NAMES[item.category] || item.category}</span>
+                    <div class="item-actions-row">
+                      <a href="${item.storeUrl}" target="_blank" rel="noopener noreferrer" class="link-store">
+                        <span>Comprar</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                          <polyline points="15 3 21 3 21 9"></polyline>
+                          <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                      </a>
+                      <button class="btn-delete-item" onclick="deleteWishItem('${item.id}')" title="Eliminar de deseados">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              `).join('')}
+              <div class="list-bottom-spacer"></div>
+            </div>
+          `}
+        `;
+
+        const searchInput = document.getElementById('lifestyle-search');
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            State.searchQuery = e.target.value;
+            renderLifestyleView(container);
+            const refocused = document.getElementById('lifestyle-search');
+            if (refocused) {
+              refocused.focus();
+              refocused.setSelectionRange(refocused.value.length, refocused.value.length);
+            }
+          });
+        }
+      }
+
+      // Filter Handlers
+      window.setClothingFilter = function(f) {
+        State.clothingFilter = f;
+        renderActiveView();
+      };
+
+      window.setLifestyleFilter = function(f) {
+        State.lifestyleFilter = f;
+        renderActiveView();
+      };
+
+      // Delete Handler
+      window.deleteWishItem = function(id) {
+        const item = State.items.find(it => it.id === id);
+        if (!item) return;
+
+        State.lastDeletedItem = item;
+        State.items = State.items.filter(it => it.id !== id);
+        saveState();
+        renderActiveView();
+        showToast(`"${item.name}" eliminado`, true);
+      };
+
+      // Modal Add Handler
+      function openAddModal() {
+        const modal = document.getElementById('modal-add-item');
+        if (!modal) return;
+        modal.classList.add('open');
+
+        const urlInput = document.getElementById('wish-url');
+        const nameInput = document.getElementById('wish-name');
+        if (urlInput) urlInput.value = '';
+        if (nameInput) nameInput.value = '';
+
+        document.getElementById('auto-detected-card').style.display = 'none';
+        document.getElementById('wish-custom-url').value = '';
+        document.getElementById('wish-file-input').value = '';
+        document.getElementById('label-upload-text').textContent = 'Subir foto desde galería / cámara';
+        document.getElementById('btn-clear-photo').style.display = 'none';
+
+        // Pre-select category based on active tab
+        document.getElementById('wish-category').value = State.currentTab === 'clothing' ? 'camisetas' : 'accesorios';
+
+        State.userCustomPhoto = null;
+        setTimeout(() => urlInput?.focus(), 200);
+      }
+
+      function closeAddModal() {
+        const modal = document.getElementById('modal-add-item');
+        if (modal) modal.classList.remove('open');
+      }
+
+      // Update Live Preview Box & auto-suggest name from URL
+      function updateFormOnUrlChange() {
+        const urlVal = document.getElementById('wish-url')?.value.trim() || '';
+        const nameInput = document.getElementById('wish-name');
+        const categorySelect = document.getElementById('wish-category');
+        const detected = extractFromUrl(urlVal);
+
+        if (detected) {
+          // If the user hasn't typed a custom name yet, auto-fill it from the URL
+          if (nameInput && (!nameInput.value || nameInput.dataset.autofilled === "true")) {
+            nameInput.value = detected.name;
+            nameInput.dataset.autofilled = "true";
+          }
+          if (categorySelect && categorySelect.dataset.userChanged !== "true") {
+            categorySelect.value = detected.category;
+          }
+        }
+
+        updateLivePreview();
+      }
+
+      function updateLivePreview() {
+        const nameVal = document.getElementById('wish-name')?.value.trim() || '';
+        const categoryVal = document.getElementById('wish-category')?.value || 'camisetas';
+        const detectedCard = document.getElementById('auto-detected-card');
+
+        if (!nameVal && !State.userCustomPhoto) {
+          if (detectedCard) detectedCard.style.display = 'none';
+          return;
+        }
+
+        const effectiveName = nameVal || "Nuevo Artículo";
+        const effectiveImage = State.userCustomPhoto || getFallbackSvg(effectiveName, categoryVal);
+
+        if (detectedCard) {
+          detectedCard.style.display = 'flex';
+          document.getElementById('auto-detected-thumb').src = effectiveImage;
+          document.getElementById('auto-detected-thumb').alt = effectiveName;
+          document.getElementById('auto-detected-name').textContent = effectiveName;
+          document.getElementById('auto-detected-meta').textContent = `${CATEGORY_NAMES[categoryVal] || categoryVal}`;
+          document.getElementById('auto-detected-badge').textContent = State.userCustomPhoto ? 'Foto propia seleccionada' : 'Vista previa';
+        }
+      }
+
+      // Submit Form
+      window.handleAddWishSubmit = function() {
+        const urlVal = document.getElementById('wish-url')?.value.trim();
+        const nameVal = document.getElementById('wish-name')?.value.trim();
+        const categoryVal = document.getElementById('wish-category')?.value || 'camisetas';
+
+        if (!urlVal) {
+          showToast("Introduce el enlace de compra");
+          return;
+        }
+
+        if (!nameVal) {
+          showToast("Introduce el nombre del producto");
+          return;
+        }
+
+        const isClothing = ['camisetas', 'pantalones', 'zapatillas', 'sudaderas-chaquetas', 'abrigos'].includes(categoryVal);
+        const finalSection = isClothing ? 'clothing' : 'lifestyle';
+        const finalImage = State.userCustomPhoto || getFallbackSvg(nameVal, categoryVal);
+
+        const newWish = {
+          id: `wish-${Date.now()}`,
+          name: nameVal,
+          section: finalSection,
+          category: categoryVal,
+          image: finalImage,
+          storeUrl: urlVal,
+          createdAt: Date.now()
+        };
+
+        State.items.unshift(newWish);
+        saveState();
+
+        State.currentTab = finalSection;
+        closeAddModal();
+        renderActiveView();
+
+        showToast(`Añadido: "${nameVal}"`);
+      };
+
+      // Setup DOM Events
+      document.addEventListener('DOMContentLoaded', () => {
+        loadPersistedState();
+        renderActiveView();
+
+        // Tab Clicks
+        document.getElementById('tab-btn-clothing')?.addEventListener('click', () => {
+          State.currentTab = 'clothing';
+          State.searchQuery = '';
+          renderActiveView();
+        });
+
+        document.getElementById('tab-btn-lifestyle')?.addEventListener('click', () => {
+          State.currentTab = 'lifestyle';
+          State.searchQuery = '';
+          renderActiveView();
+        });
+
+        // Add Modal Open & Close
+        document.getElementById('btn-header-add')?.addEventListener('click', openAddModal);
+        document.getElementById('fab-add-btn')?.addEventListener('click', openAddModal);
+        document.getElementById('modal-close-add')?.addEventListener('click', closeAddModal);
+
+        document.getElementById('modal-add-item')?.addEventListener('click', (e) => {
+          if (e.target.id === 'modal-add-item') closeAddModal();
+        });
+
+        // Zoom Modal Close
+        document.getElementById('btn-close-zoom')?.addEventListener('click', closeImageZoom);
+        document.getElementById('modal-zoom-image')?.addEventListener('click', (e) => {
+          if (e.target.id === 'modal-zoom-image') closeImageZoom();
+        });
+
+        // Search button focus
+        document.getElementById('btn-open-search')?.addEventListener('click', () => {
+          const searchInput = document.getElementById(State.currentTab === 'clothing' ? 'clothing-search' : 'lifestyle-search');
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+
+        // URL input change listener
+        const urlInput = document.getElementById('wish-url');
+        if (urlInput) {
+          urlInput.addEventListener('input', updateFormOnUrlChange);
+          urlInput.addEventListener('paste', () => setTimeout(updateFormOnUrlChange, 60));
+        }
+
+        // Name input listener (track manual user edit)
+        const nameInput = document.getElementById('wish-name');
+        nameInput?.addEventListener('input', () => {
+          nameInput.dataset.autofilled = "false";
+          updateLivePreview();
+        });
+
+        // Category change listener
+        const catSelect = document.getElementById('wish-category');
+        catSelect?.addEventListener('change', () => {
+          catSelect.dataset.userChanged = "true";
+          updateLivePreview();
+        });
+
+        // Custom Photo: File Upload
+        const fileInput = document.getElementById('wish-file-input');
+        const triggerBtn = document.getElementById('btn-trigger-file-upload');
+        const clearPhotoBtn = document.getElementById('btn-clear-photo');
+        const customUrlInput = document.getElementById('wish-custom-url');
+
+        triggerBtn?.addEventListener('click', () => fileInput?.click());
+
+        fileInput?.addEventListener('change', (e) => {
+          const file = e.target.files?.[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = function(event) {
+            State.userCustomPhoto = event.target.result;
+            document.getElementById('label-upload-text').textContent = '✓ Foto cargada: ' + file.name.slice(0, 15) + '...';
+            clearPhotoBtn.style.display = 'inline-block';
+            if (customUrlInput) customUrlInput.value = '';
+            updateLivePreview();
+            showToast("Foto cargada con éxito");
+          };
+          reader.readAsDataURL(file);
+        });
+
+        // Custom Photo: Pasted URL
+        customUrlInput?.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          if (val) {
+            State.userCustomPhoto = val;
+            clearPhotoBtn.style.display = 'inline-block';
+            document.getElementById('label-upload-text').textContent = 'Subir foto desde galería / cámara';
+          } else if (!fileInput.files?.[0]) {
+            State.userCustomPhoto = null;
+            clearPhotoBtn.style.display = 'none';
+          }
+          updateLivePreview();
+        });
+
+        // Clear Custom Photo
+        clearPhotoBtn?.addEventListener('click', () => {
+          State.userCustomPhoto = null;
+          fileInput.value = '';
+          if (customUrlInput) customUrlInput.value = '';
+          document.getElementById('label-upload-text').textContent = 'Subir foto desde galería / cámara';
+          clearPhotoBtn.style.display = 'none';
+          updateLivePreview();
+        });
+      });
+    </script>
+  </body>
+</html>

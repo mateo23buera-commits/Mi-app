@@ -1,0 +1,6 @@
+{
+  "name": "Atelier Noir - Urban Menswear",
+  "description": "Minimalist mobile wardrobe planner and menswear curator with smart item matching, custom outfits, and gear tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
